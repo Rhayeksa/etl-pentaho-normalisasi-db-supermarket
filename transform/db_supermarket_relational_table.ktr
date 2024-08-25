@@ -505,38 +505,29 @@
     <replace_variables>N</replace_variables>
     <quoteString>N</quoteString>
     <sql>ALTER TABLE db_supermarket.sch_supermarket.tbl_customer_addr
-DROP CONSTRAINT IF EXISTS fk_customer;
-ALTER TABLE db_supermarket.sch_supermarket.tbl_customer_addr
-ADD CONSTRAINT fk_customer FOREIGN KEY (customer_id)
-REFERENCES db_supermarket.sch_supermarket.tbl_customer(customer_id);
+	DROP CONSTRAINT IF EXISTS fk_customer
+	, ADD CONSTRAINT fk_customer FOREIGN KEY (customer_id) REFERENCES db_supermarket.sch_supermarket.tbl_customer(customer_id)
+;
 
 ALTER TABLE db_supermarket.sch_supermarket.tbl_product_price
-DROP CONSTRAINT IF EXISTS fk_product;
-ALTER TABLE db_supermarket.sch_supermarket.tbl_product_price
-ADD CONSTRAINT fk_product FOREIGN KEY (product_id)
-REFERENCES db_supermarket.sch_supermarket.tbl_product(product_id);
+	DROP CONSTRAINT IF EXISTS fk_product
+	, ADD CONSTRAINT fk_product FOREIGN KEY (product_id) REFERENCES db_supermarket.sch_supermarket.tbl_product(product_id)
+;
+
 
 ALTER TABLE db_supermarket.sch_supermarket.tbl_sales_order
-DROP CONSTRAINT IF EXISTS fk_shipping;
-ALTER TABLE db_supermarket.sch_supermarket.tbl_sales_order
-ADD CONSTRAINT fk_shipping FOREIGN KEY (shipping_id)
-REFERENCES db_supermarket.sch_supermarket.tbl_shipping(shipping_id);
-ALTER TABLE db_supermarket.sch_supermarket.tbl_sales_order
-DROP CONSTRAINT IF EXISTS fk_customer;
-ALTER TABLE db_supermarket.sch_supermarket.tbl_sales_order
-ADD CONSTRAINT fk_customer FOREIGN KEY (customer_id)
-REFERENCES db_supermarket.sch_supermarket.tbl_customer(customer_id);
+	DROP CONSTRAINT IF EXISTS fk_shipping
+	, DROP CONSTRAINT IF EXISTS fk_customer
+	, ADD CONSTRAINT fk_shipping FOREIGN KEY (shipping_id) REFERENCES db_supermarket.sch_supermarket.tbl_shipping(shipping_id)
+	, ADD CONSTRAINT fk_customer FOREIGN KEY (customer_id) REFERENCES db_supermarket.sch_supermarket.tbl_customer(customer_id)
+;
 
 ALTER TABLE db_supermarket.sch_supermarket.tbl_sales_order_detail
-DROP CONSTRAINT IF EXISTS fk_sales_order;
-ALTER TABLE db_supermarket.sch_supermarket.tbl_sales_order_detail
-ADD CONSTRAINT fk_sales_order FOREIGN KEY (sales_order_id)
-REFERENCES db_supermarket.sch_supermarket.tbl_sales_order(sales_order_id);
-ALTER TABLE db_supermarket.sch_supermarket.tbl_sales_order_detail
-DROP CONSTRAINT IF EXISTS fk_product;
-ALTER TABLE db_supermarket.sch_supermarket.tbl_sales_order_detail
-ADD CONSTRAINT fk_product FOREIGN KEY (product_id)
-REFERENCES db_supermarket.sch_supermarket.tbl_product(product_id);
+	DROP CONSTRAINT IF EXISTS fk_sales_order
+	, DROP CONSTRAINT IF EXISTS fk_product
+	, ADD CONSTRAINT fk_sales_order FOREIGN KEY (sales_order_id) REFERENCES db_supermarket.sch_supermarket.tbl_sales_order(sales_order_id)
+	, ADD CONSTRAINT fk_product FOREIGN KEY (product_id) REFERENCES db_supermarket.sch_supermarket.tbl_product(product_id)
+;
 </sql>
     <set_params>N</set_params>
     <insert_field/>
